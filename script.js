@@ -1,7 +1,7 @@
-// const scroll = new LocomotiveScroll({
-//     el: document.querySelector('#main'),
-//     smooth: true
-// });
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('body'),
+    smooth: true
+});
 gsap.registerPlugin(ScrollTrigger);
 
 // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
@@ -33,17 +33,82 @@ ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
 ScrollTrigger.refresh();
 
-// gsap.from("#page2 #box",{
-//     scale:0,
-//     duration:1,
-   
-//     rotate:360,
-//     scrollTrigger:{
-//         trigger:"#page2 #box",
-//         scroller:"#main",
-//         markers:true,
-//         start:"top 60%",
-//         end:"top 30%",
-//         scrub:2
-//     }
-// })
+const tl = gsap.timeline();
+tl.from("#nav h1",{
+  y:-400,
+  opacity:0,
+  duration:0.5,
+ 
+ 
+});
+tl.from("#nav-part1 li",{
+  y:-400,
+  opacity:0,
+  duration:0.3,
+  stagger:0.1
+});
+tl.from("#main #left #left1",{
+  x:-300,
+  opacity:0,
+  duration:0.2
+});
+tl.from("#main #left #left2",{
+  y:300,
+  opacity:0,
+  duration:0.2
+});
+tl.from("#right1,#right2,#right4,#left3",{
+  y:-200,
+  opacity:0,
+  duration:0.3,
+});
+tl.from("#right3 img",{
+  y:100,
+  opacity:0,
+  duration:0.5
+});
+tl.from("#right5",{
+  x:1000,
+  opacity:0
+})
+gsap.from("#main2 .video,#main2 #mid-lab",{
+  x:-100,
+  opacity:0,
+  duration:1.3,
+  opacity:0,
+  scrollTrigger:{
+    trigger:"#main2 .video",
+    scroller:"body",
+    starts:"top 60%",
+    ends:"top bottom",
+    // scrub:true
+    // markers:true
+  }
+});
+gsap.from("#main2 .imgbox ",{
+  scale:0,
+  opacity:0,
+  duration:1,
+  opacity:0,
+  scrollTrigger:{
+    trigger:"#main2 .video",
+    scroller:"body",
+    starts:"top center",
+    ends:"top bottom",
+    // markers:true
+  }
+});
+gsap.from("#main2 .doc,#main2 #one , #main2 .under ",{
+  y:-100,
+  opacity:0,
+  duration:1,
+  opacity:0,
+  scrollTrigger:{
+    trigger:"#main2 .video",
+    scroller:"body",
+    starts:"top center",
+    ends:"top center",
+    // markers:true
+  }
+});
+
